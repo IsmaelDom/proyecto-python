@@ -27,5 +27,17 @@ class Acciones():
     def login(self):
         print("Por favor, identificate en el sistema....\n")
 
-        email = input("Ingresa tu correo: ")
-        password = input("Ingresa tu contraseña: ")
+        try:
+            email = input("Ingresa tu correo: ")
+            password = input("Ingresa tu contraseña: ")
+
+            usuario = userModel.Usuario('', '', '', email, password)
+            login = usuario.identificar()
+
+            if email == login[4]:
+                print(f"\nBienvenido, {login[1]}, te has registrado en el sistema el {login[6]}")
+
+        except Exception as e:
+            print(type(e))
+            print(type(e).__name__)
+            print("Correo o Contraseña incorrecta, vuelve a intentarlo")
