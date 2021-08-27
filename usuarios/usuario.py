@@ -1,6 +1,7 @@
 # Se importan las bibliotecas necesarias
 import mysql.connector
 import datetime
+import hashlib
 
 # Se realiza la conexion con la bd
 database = mysql.connector.connect(
@@ -28,10 +29,14 @@ class Usuario():
     # Metodo que guarda en la bd los registros que recibe acciones.registro
     def registrar(self):
         fecha = datetime.datetime.now()
-        sql = "INSERT INTO usuarios VALUES(null, %s, %s, %s, %s, %s, %s);"
-        print(self.apellidoMaterno)
 
-        usuario = (self.nombre, self.apellidoPaterno, self.apellidoMaterno, self.email, self.password, fecha)
+        # Cifrar contraseña
+        cifrado = hashlib.sha256()
+        cifrado.update(self.password.encode('utf8'))
+
+        sql = "INSERT INTO usuarios VALUES(null, %s, %s, %s, %s, %s, %s);"
+
+        usuario = (self.nombre, self.apellidoPaterno, self.apellidoMaterno, self.email, cifrado.hexdigest(), fecha)
 
         try:
             cursor.execute(sql, usuario)
