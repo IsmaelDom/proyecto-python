@@ -36,8 +36,37 @@ class Acciones():
 
             if email == login[4]:
                 print(f"\nBienvenido, {login[1]}, te has registrado en el sistema el {login[6]}")
+                self.proximasAcciones(login)
 
         except Exception as e:
             print(type(e))
             print(type(e).__name__)
             print("Correo o Contraseña incorrecta, vuelve a intentarlo")
+
+    # Metodo 
+    def proximasAcciones(self, usuario):
+        print("""
+        Acciones disponibles(Ingresa el número):
+            1.- Crear nota (Ingrese -> 1)
+            2.- Mostrar tus notas (Ingrese -> 2)
+            3.- Eliminar nota (Ingrese -> 3)
+            4.- Salir (Ingrese -> 4)
+        """)
+
+        accion = int(input("Ingrese el número de lo que desea hacer: "))
+        
+        if accion == 1:
+            print("Crear")
+            self.proximasAcciones(usuario)
+        
+        elif accion == 2:
+            print("Mostrar")
+            self.proximasAcciones(usuario)
+        
+        elif accion == 3:
+            print("Eliminar")
+            self.proximasAcciones(usuario)
+
+        elif accion == 4:
+            print("\nSaliendo....\nSe a cerrado la sesión")
+            exit()
