@@ -1,3 +1,4 @@
+# Se importan las bibliotecas necesarias
 import mysql.connector
 import datetime
 
