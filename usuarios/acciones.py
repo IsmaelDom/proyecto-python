@@ -64,7 +64,7 @@ class Acciones():
             self.proximasAcciones(usuario)
         
         elif accion == 2:
-            print("Mostrar")
+            notaAcciones.mostrar(usuario)
             self.proximasAcciones(usuario)
         
         elif accion == 3:

@@ -19,3 +19,12 @@ class Acciones:
         
         else:
             print(f"\nNo se pudo guardar la nota: {nota.titulo}")
+
+    # Metodo para mostrar las notas del usuario
+    def mostrar(self, usuario):
+        print(f"\nNotas de {usuario[1]}: ")
+
+        nota = notaModel.Nota(usuario[0])
+        notas = nota.listar()
+
+        print(notas)

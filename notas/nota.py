@@ -10,7 +10,7 @@ cursor = connect[1]
 class Nota:
 
     # Constructor de la clase
-    def __init__(self, usuario_id, titulo, descripcion):
+    def __init__(self, usuario_id, titulo = "", descripcion = ""):
         self.usuario_id = usuario_id
         self.titulo = titulo
         self.descripcion = descripcion
@@ -24,3 +24,12 @@ class Nota:
         database.commit()
 
         return [cursor.rowcount, self]
+
+    # Metodo para listas las notas del usuario logueado
+    def listar(self):
+        sql = f"SELECT * FROM notas WHERE usuario_id = {self.usuario_id}"
+
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        
+        return result
