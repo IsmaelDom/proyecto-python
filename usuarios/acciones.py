@@ -1,4 +1,7 @@
+# Se importa el modelo Usuario
 import usuarios.usuario as userModel
+# Se importa el modulo de acciones de notas
+import notas.acciones
 
 class Acciones():
     """docstring for Acciones."""
@@ -54,9 +57,10 @@ class Acciones():
         """)
 
         accion = int(input("Ingrese el número de lo que desea hacer: "))
+        notaAcciones = notas.acciones.Acciones()
         
         if accion == 1:
-            print("Crear")
+            notaAcciones.crear(usuario)
             self.proximasAcciones(usuario)
         
         elif accion == 2:
@@ -68,5 +72,5 @@ class Acciones():
             self.proximasAcciones(usuario)
 
         elif accion == 4:
-            print("\nSaliendo....\nSe a cerrado la sesión")
+            print("\nSaliendo....\nSe ha cerrado la sesión")
             exit()
