@@ -1,5 +1,7 @@
 import mysql.connector
+import datetime
 
+# Se realiza la conexion con la bd
 database = mysql.connector.connect(
     host = "",
     user = "",
@@ -14,6 +16,7 @@ cursor = database.cursor(buffered = True)
 class Usuario():
     """docstring for Usuario."""
 
+    # Constructor de la clase
     def __init__(self, nombre, apellidoPaterno, apellidoMaterno, email, password):
         self.nombre = nombre
         self.apellidoPaterno = apellidoPaterno
@@ -21,8 +24,18 @@ class Usuario():
         self.email = email
         self.password = password
     
+    # Metodo que guarda en la bd los registros que recibe acciones.registro
     def registrar(self):
-        return self.nombre
+        fecha = datetime.datetime.now()
+        sql = "INSERT INTO usuarios VALUES(null, %s, %s, %s, %s, %s, %s);"
+        print(self.apellidoMaterno)
+
+        usuario = (self.nombre, self.apellidoPaterno, self.apellidoMaterno, self.email, self.password, fecha)
+
+        cursor.execute(sql, usuario)
+        database.commit()
+
+        return [cursor.rowcount, self]
 
     def identificar(self):
         return self.nombre
