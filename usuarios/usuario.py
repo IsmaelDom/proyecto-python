@@ -1,19 +1,12 @@
 # Se importan las bibliotecas necesarias
-import mysql.connector
 import datetime
 import hashlib
+import usuarios.conexion as conexion
 
-# Se realiza la conexion con la bd
-database = mysql.connector.connect(
-    host = "",
-    user = "",
-    passwd = "",
-    database = "master_python",
-    port = 3306
-)
-
-# Permite ejecutar muchas consultas con el mismo cursor
-cursor = database.cursor(buffered = True)
+# Se obtienen los datos de la conexion
+connect = conexion.conectar()
+database = connect[0]
+cursor = connect[1]
 
 class Usuario():
     """docstring for Usuario."""
