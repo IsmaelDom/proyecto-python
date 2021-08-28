@@ -68,7 +68,7 @@ class Acciones():
             self.proximasAcciones(usuario)
         
         elif accion == 3:
-            print("Eliminar")
+            notaAcciones.borrar(usuario)
             self.proximasAcciones(usuario)
 
         elif accion == 4:
