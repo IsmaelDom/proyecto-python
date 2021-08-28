@@ -22,9 +22,13 @@ class Acciones:
 
     # Metodo para mostrar las notas del usuario
     def mostrar(self, usuario):
-        print(f"\nNotas de {usuario[1]}: ")
+        print(f"\nNotas de \"{usuario[1]}\": ")
 
         nota = notaModel.Nota(usuario[0])
         notas = nota.listar()
 
-        print(notas)
+        for note in notas:
+            print("\n***************************************")
+            print(note[2])
+            print(note[3])
+            print("***************************************")
